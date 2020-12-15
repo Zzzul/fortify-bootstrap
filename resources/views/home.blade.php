@@ -22,7 +22,7 @@
 
                     <form method="post" action="/user/two-factor-authentication">
                         @csrf
-
+                        {{-- if user activate two factor authentication --}}
                         @if (auth()->user()->two_factor_secret)
                         @method('delete')
                         <div class="row">
@@ -43,15 +43,25 @@
                             </div>
                         </div>
 
-                        <button class="btn btn-danger mt-3 float-right" type="submit">Disable 2FA
+                        <button class="btn btn-danger mt-3 float-left" type="submit">Disable Two Factor
                             Authentication</button>
 
                         @else
                         <p class="float-left">{{ __('You are logged in!') }}</p>
-                        <button class="btn btn-primary float-right" type="submit">Enable 2FA
+                        <button class="btn btn-primary float-right" type="submit">Enable Two Factor
                             Authentication</button>
                         @endif
                     </form>
+
+                    {{-- generate recovery codes --}}
+                    @if ((auth()->user()->two_factor_secret))
+                    <form method="POST" action="/user/two-factor-recovery-codes">
+                        @csrf
+                        <button class="btn btn-primary mt-3 float-right" type="submit">
+                            Regenerate Recovery Codes
+                        </button>
+                    </form>
+                    @endif
                 </div>
             </div>
         </div>
