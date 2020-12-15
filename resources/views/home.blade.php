@@ -20,31 +20,38 @@
                     </div>
                     @endif
 
-
                     <form method="post" action="/user/two-factor-authentication">
                         @csrf
 
                         @if (auth()->user()->two_factor_secret)
                         @method('delete')
-
-                        <div>
-                            {!! auth()->user()->twoFactorQrcodeSvg() !!}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>
+                                    Scan the following QR Code into your phones authentication
+                                    applications.
+                                </p>
+                                {!! auth()->user()->twoFactorQrcodeSvg() !!}
+                            </div>
+                            <div class="col-md-6">
+                                <p>Save these Recovery Codes in a secure location.</p>
+                                <ul>
+                                    @foreach (json_decode(decrypt(auth()->user()->two_factor_recovery_codes)) as $code)
+                                    <li>{{ $code }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
 
-                        <div>
-                            <h4>Recovery Codes : </h4>
-                            <ul>
-                                @foreach (json_decode(decrypt(auth()->user()->two_factor_recovery_codes)) as $code)
-                                <li>{{ $code }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <button class="btn btn-danger" type="submit">Disable</button>
+                        <button class="btn btn-danger mt-3 float-right" type="submit">Disable 2FA
+                            Authentication</button>
+
                         @else
-                        <button class="btn btn-primary" type="submit">Enable</button>
+                        <p class="float-left">{{ __('You are logged in!') }}</p>
+                        <button class="btn btn-primary float-right" type="submit">Enable 2FA
+                            Authentication</button>
                         @endif
                     </form>
-                    {{ __('You are logged in!') }}
                 </div>
             </div>
         </div>
