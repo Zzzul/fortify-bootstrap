@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Two Factor Challenge') }}</div>
 
                 <div class="card-body">
-                    <p>{{ __('Please enter your atuhentication code to login.') }}</p>
+                    <p class="text-center">{{ __('Please enter your atuhentication code to login.') }}</p>
 
                     <form method="POST" action="{{ route('two-factor.login') }}">
                         @csrf
@@ -18,7 +18,7 @@
 
                             <div class="col-md-6">
                                 <input id="code" type="text" class="form-control @error('code') is-invalid @enderror"
-                                    name="code" required autocomplete="current-code">
+                                    name="code">
 
                                 @error('code')
                                 <span class="invalid-feedback" role="alert">
@@ -28,26 +28,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Submit') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+                        <hr>
 
-            <div class="card mt-4">
-                <div class="card-header">{{ __('Two Factor Recovery Code') }}</div>
-
-                <div class="card-body">
-                    <p>{{ __('Please enter your atuhentication recovery code to login.') }}</p>
-
-                    <form method="POST" action="{{ route('two-factor.login') }}">
-                        @csrf
-
+                        <p class="mt-3 text-center">{{ __('Or you can enter one of your recovery codes.') }}</p>
                         <div class="form-group row">
                             <label for="recovery_code"
                                 class="col-md-4 col-form-label text-md-right">{{ __('Recovery Code') }}</label>
@@ -74,8 +57,13 @@
                         </div>
                     </form>
                 </div>
+                {{-- end of card-body --}}
             </div>
+            {{-- end of card --}}
         </div>
+        {{-- end of col --}}
     </div>
+    {{-- end of row --}}
 </div>
+{{-- end of container --}}
 @endsection
