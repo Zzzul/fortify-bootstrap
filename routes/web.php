@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::view('/home', 'home')->middleware('auth');
+Route::group(['middleware' => 'auth'], function () {
+    Route::view('/home', 'home');
+    Route::view('/profile/edit', 'profile.edit')->name('user-profile-information.edit');
+});
