@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::view('/home', 'home');
-    Route::view('/profile/edit', 'profile.edit')->name('user-profile-information.edit');
+    Route::view('/home', 'home')->name('home');
+    Route::view('/profile', 'profile.edit')->name('user-profile-information.edit');
+    Route::view('/profile/change-password', 'profile.password')->name('password.edit');
 });

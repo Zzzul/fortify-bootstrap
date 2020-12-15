@@ -37,7 +37,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -65,6 +67,10 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a href="{{ route('user-profile-information.edit') }}" class="dropdown-item">
                                     Edit Profile
+                                </a>
+
+                                <a href="{{ route('password.edit') }}" class="dropdown-item">
+                                    Change Password
                                 </a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"

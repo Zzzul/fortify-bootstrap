@@ -10,7 +10,7 @@
                 <div class="card-body">
                     @if (session('status') == 'profile-information-updated')
                     <div class="alert alert-success">
-                        Profile information updated successfully!
+                        Profile information updated successfully.
                     </div>
                     @endif
                     <form method="POST" action="{{ route('user-profile-information.update') }}">
