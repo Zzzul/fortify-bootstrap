@@ -55,11 +55,11 @@ class FortifyServiceProvider extends ServiceProvider
         // });
 
         Fortify::requestPasswordResetLinkView(function () {
-            return view('auth.forgot-password');
+            return view('auth.passwords.forgot-password');
         });
 
         Fortify::resetPasswordView(function ($request) {
-            return view('auth.reset-password', ['request' => $request]);
+            return view('auth.passwords.reset-password', ['request' => $request]);
         });
 
         Fortify::verifyEmailView(function ($request) {
@@ -67,7 +67,7 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::confirmPasswordView(function () {
-            return view('auth.password-confirm');
+            return view('auth.passwords.password-confirm');
         });
 
         Fortify::twoFactorChallengeView(function () {
