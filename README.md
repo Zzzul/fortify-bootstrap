@@ -24,7 +24,7 @@ $ git clone https://github.com/Zzzul/fortify-bootstrap.git
 
 Install all dependencies
 ```shell
-# install composer dependency
+# install laravel dependency
 $ composer install
 
 # install npm packages
@@ -45,8 +45,11 @@ $ php artisan key:generate
 # laravel migrate
 $ php artisan migrate
 
+# or for fresh migrate and seeder
+$ php artisan migrate:fresh --seed
+
 # Start local development server
-$ php artisan migrate
+$ php artisan serve
 ```
 
 ## What next ?
